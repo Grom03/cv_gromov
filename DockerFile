@@ -8,6 +8,7 @@ RUN yum -y update && yum -y install \
     texlive-collection-langcyrillic \
     texlive-sectsty
 
-CMD pdflatex -interaction=nonstopmode \
+CMD cd CV \
+    pdflatex -interaction=nonstopmode \
     -output-directory /CV \
-    /CV/cv.tex
+    cv.tex
