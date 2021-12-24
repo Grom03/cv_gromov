@@ -1,0 +1,18 @@
+on: [push]
+jobs:
+    MakePDF:
+        runs-on: ubuntu-20.04
+        name: MakeCVWithDocker
+        steps:
+          - name: checkout
+            uses: actions/checkout@v2
+          - name: build and run
+            run:
+                docker build --tag cv_with_libs -f DockerFile .
+                docker run --mount src=`pwd`/CV, target=/CV cv_with_libs
+          - name: upload
+            uses: actions/upload-artifact@v2
+            with:
+                name: cv
+                path: CV/cv.pdf
+                retention-days: 2
