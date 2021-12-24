@@ -7,7 +7,7 @@ jobs:
           - name: checkout
             uses: actions/checkout@v2
           - name: build and run
-            run:
+            run: |
                 docker build --tag cv_with_libs -f DockerFile .
                 docker run --mount src=`pwd`/CV, target=/CV cv_with_libs
           - name: upload
