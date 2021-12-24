@@ -1,0 +1,15 @@
+FROM fedora:31
+
+RUN yum -y update && yum -y install \
+    texlive-collection-latexrecommended \
+    texlive-collection-fontsrecommended \
+    texlive-collection-pictures \
+    texlive-collection-science \
+    texlive-collection-langcyrillic \
+    texlive-sectsty
+
+COPY CV /CV
+
+CMD pdflatex -interaction=nonstopmode \
+    -output-directory /CV \
+    /CV/cv.tex
