@@ -39,4 +39,3 @@ jobs:
                 git add cv.pdf
                 git commit -m "Publicate CV"
                 git push origin show
-                git checkout main
