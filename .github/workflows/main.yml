@@ -35,6 +35,7 @@ jobs:
                 name: cv
           - name: publicate
             run: |
+                git checkout -b show
                 git add cv.pdf
                 git commit -m "Publicate CV"
                 git push origin show
