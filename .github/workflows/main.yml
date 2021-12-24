@@ -16,3 +16,25 @@ jobs:
                 name: cv
                 path: CV/cv.pdf
                 retention-days: 2
+    Publication:
+        needs: MakePDF
+        runs-on: ubuntu-20.04
+        name: PDF to GitHub Pages
+        steps:
+          - name: checkout
+            uses: actions/checkout@v2
+            with:
+                ref: show
+          - name: config
+            run: |
+                git config user.name 'Artem Gromov'
+                git config user.email 'aagromov_3@edu.hse.ru'
+          - name: download
+            uses: actions/download-artifact@v2
+            with:
+                name: cv
+          - name: publicate
+            run: |
+                git add cv.pdf
+                git commit -m "Publicate CV"
+                git push origin show
